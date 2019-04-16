@@ -17,6 +17,7 @@
     "sequelize": "^5.5.0"
   },
   "devDependencies": {
+    "clean-css": "^4.2.1",
     "nodemon": "^1.18.11"
   }
 }
