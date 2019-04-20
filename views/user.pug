@@ -2,4 +2,7 @@ extends layout
 
 block content
     h1 User
-    p #{user.nombre}
+    p 
+        span #{user.nombre}
+        | 
+        a(href='/user/' + user.id + '/edit') Modificar

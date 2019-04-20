@@ -28,3 +28,25 @@ exports.show_user = function(req,res,next){
         res.render('user', { user: user });
     })
 }
+
+exports.show_edit_user = function(req,res,next){
+    return models.User.findOne({
+        where: {
+            id: req.params.user_id
+        }
+    }).then(user => {
+        res.render('user/edit_user', { user: user });
+    });
+}
+
+exports.edit_user = function(req,res,next){
+    return models.User.update({
+        nombre: req.body.nombre
+    }, {
+        where: {
+            id: req.params.user_id
+        }
+    }).then(result => {
+        res.redirect('/user/' + req.params.user_id);
+    });
+}
