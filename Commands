@@ -1,3 +1,7 @@
 start server:  DEBUG=kanban:* npm start
 
 sequelize db:migrate
+
+
+Expres
+Pug

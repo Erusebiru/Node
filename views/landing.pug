@@ -7,3 +7,10 @@ block content
     input(type="text", name="nombre", placeholder="Introduce tu nombre...")
     button(type="submit") Enviar
 
+  if users
+    h1 Listado de usuarios
+    for user in users
+      p 
+        span #{user.nombre}
+        | 
+        a(href='/user/' + user.id) Details
