@@ -3,7 +3,7 @@ extends layout
 block content
   div(class='header')
     h1= title
-    form(action="/",method="POST")
+    form(action="/",method="POST" id="formNewTask")
       input(type="text", name="tarea", placeholder="Introduce una tarea...")
       button(type="submit") Enviar
 
@@ -29,8 +29,7 @@ block content
                 if(task.estado == "backlog")
                   tr(draggable="true", class="tarea" data-id=task.id)
                     td.tdInfo
-                      p 
-                        span #{task.tarea}
+                      span #{task.tarea}
                     td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
                       span Ver
       div.board
@@ -53,8 +52,7 @@ block content
                 if(task.estado == "analisis")
                   tr(draggable="true", class="tarea" data-id=task.id)
                     td.tdInfo
-                      p 
-                        span #{task.tarea}
+                      span #{task.tarea}
                     td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
                       span Ver
       div.board
@@ -77,8 +75,7 @@ block content
                 if(task.estado == "todo")
                   tr(draggable="true", class="tarea" data-id=task.id)
                     td.tdInfo
-                      p 
-                        span #{task.tarea}
+                      span #{task.tarea}
                     td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
                       span Ver
       div.board
@@ -101,8 +98,7 @@ block content
                 if(task.estado == "validation")
                   tr(draggable="true", class="tarea" data-id=task.id)
                     td.tdInfo
-                      p 
-                        span #{task.tarea}
+                      span #{task.tarea}
                     td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
                       span Ver
       div.board
@@ -125,8 +121,7 @@ block content
                 if(task.estado == "done")
                   tr(draggable="true", class="tarea" data-id=task.id)
                     td.tdInfo
-                      p 
-                        span #{task.tarea}
+                      span #{task.tarea}
                     td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
                       span Ver
 
@@ -134,4 +129,8 @@ block content
     $(document).ready(function(){
       initBoards()
       initChilds();
+      $('#formNewTask').on('submit',function(e){
+        e.preventDefault();
+        createTask($(this).children().eq(0).val());
+      });
     })

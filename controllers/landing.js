@@ -6,19 +6,23 @@ exports.get_landing = function(req, res, next) {
 }
 
 exports.submit_task = function(req,res,next){
-    console.log(req.body)
-    return models.Task.create({
-        "estado": "backlog",
+    /*return models.Task.create({
+        "estado": req.body.estado,
         "tarea": req.body.tarea
-        
-    }).then(task => {
-        res.redirect('/tasks');
+    });*/
+    models.Task.create({
+        "estado": req.body.estado,
+        "tarea": req.body.tarea
+    },{
+        attributes: {include: ['estado','tarea']}
+    }).then(tasks => {
+        res.send(tasks);
     });
 }
 
 exports.show_tasks = function(req,res,next){
     models.Task.findAll().then(tasks => {
-        res.render('landing', {title:'Express',tasks: tasks});
+        res.render('landing', {tasks: tasks});
     })
 }
 

@@ -80,8 +80,8 @@ th{
 
 .board{
   height: 100%;
+  width: 15%;
   background: transparent;
-  min-width: 300px;
   text-align: center;
   display:table;
   flex-direction: row;

@@ -22,14 +22,10 @@ function initBoards(){
 			event.preventDefault();
 			if ( event.target.className.includes("dropZone")) {
 				event.target.style.background = "";
-				var table = event.target.parentNode.parentNode.parentNode;
-				if ($(table).children().length < 2) {
-					var thead = $('<thead>').html('<tr><th><span>Tarea</th><th>Detalles</th>').prependTo(table);
-				}
 				
-				if($(dragged.parentNode.parentNode).children().eq(1).children().length < 3){
+				/*if($(dragged.parentNode.parentNode).children().eq(1).children().length < 3){
 					$(dragged.parentNode.parentNode).children().eq(0).remove();
-				}
+				}*/
 				dragged.parentNode.removeChild( dragged );
 				
 				$(dragged).appendTo(event.target.parentNode.parentNode);
@@ -39,8 +35,8 @@ function initBoards(){
 				var id = $(dragged).data('id');
 				updateState(state,id);
 
-				initBoards()
-				initChilds();
+				//initBoards()
+				//initChilds();
 			}
 		}, false);
 	}
@@ -69,6 +65,27 @@ function updateState(state,id){
 		method: 'post',
 		data: {
 			estado: state
+		}
+	})
+}
+
+function createTask(task){
+	$.ajax({
+		url: '/task/create',
+		method: 'post',
+		data: {
+			tarea: task,
+			estado: 'backlog'
+		},
+		success: function(result){
+			console.log(result)
+			var tr = $('<tr>').attr({'draggable':true,'class':'tarea','data-id':result.id}).appendTo('.backlog tbody');
+			$('<td>').attr('class','tdInfo').text(result.tarea).appendTo(tr);
+			$('<td>').attr({'class':'details','onclick':'javascript:window.location.href = "' + result.id + '"'}).text('Ver').appendTo(tr);
+		},
+		error: function(result){
+			console.log("ERROR")
+			console.log("result")
 		}
 	})
 }
