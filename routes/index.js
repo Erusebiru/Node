@@ -5,9 +5,9 @@ const landing = require('../controllers/landing');
 
 router.get('/', landing.get_landing);
 
-router.post('/Node/task/create',landing.submit_task);
+router.post('/task/create',landing.submit_task);
 
-router.get('/Node/tasks', landing.show_tasks);
+router.get('/tasks', landing.show_tasks);
 
 router.get('/task/:task_id',landing.show_task);
 
