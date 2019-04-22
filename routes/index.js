@@ -15,4 +15,6 @@ router.get('/user/:user_id/edit',landing.show_edit_user);
 
 router.post('/user/:user_id/edit', landing.edit_user);
 
+router.post('/user/:user_id/delete', landing.delete_user);
+
 module.exports = router;

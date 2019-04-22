@@ -6,3 +6,6 @@ block content
         span #{user.nombre}
         | 
         a(href='/user/' + user.id + '/edit') Modificar
+        | 
+        form(action="/user/" + user.id + '/delete', method="POST")
+            button(type="submit") Eliminar

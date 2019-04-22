@@ -1,16 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  form(action="/",method="POST")
-    input(type="text", name="nombre", placeholder="Introduce tu nombre...")
-    button(type="submit") Enviar
+  div(class='header')
+    h1= title
+    form(action="/",method="POST")
+      input(type="text", name="nombre", placeholder="Introduce tu nombre...")
+      button(type="submit") Enviar
 
-  if users
-    h1 Listado de usuarios
-    for user in users
-      p 
-        span #{user.nombre}
-        | 
-        a(href='/user/' + user.id) Details
+  div(class='content')
+    if users
+      h1 Listado de usuarios
+      table
+        thead
+          tr
+            th
+              span Fecha de creación
+            th
+              span Nombre
+            th
+              span Detalles
+        tbody
+          each user in users
+            tr
+              td
+                span #{user.createdAt}
+              td
+                p 
+                  span #{user.nombre}
+              td(class="details")
+                a(href='/user/' + user.id) Ver detalles

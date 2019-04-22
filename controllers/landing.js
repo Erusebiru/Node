@@ -50,3 +50,13 @@ exports.edit_user = function(req,res,next){
         res.redirect('/user/' + req.params.user_id);
     });
 }
+
+exports.delete_user = function(req,res,next){
+    return models.User.destroy({
+        where: {
+            id: req.params.user_id
+        }
+    }).then(result => {
+        res.redirect('/users');
+    })
+}
