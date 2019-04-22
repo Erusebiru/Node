@@ -6,17 +6,13 @@ exports.get_landing = function(req, res, next) {
 }
 
 exports.submit_task = function(req,res,next){
-    /*return models.Task.create({
-        "estado": req.body.estado,
-        "tarea": req.body.tarea
-    });*/
     models.Task.create({
         "estado": req.body.estado,
         "tarea": req.body.tarea
     },{
         attributes: {include: ['estado','tarea']}
-    }).then(tasks => {
-        res.send(tasks);
+    }).then(task => {
+        res.send(task);
     });
 }
 
