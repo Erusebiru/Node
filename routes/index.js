@@ -3,11 +3,11 @@ const router = express.Router();
 
 const landing = require('../controllers/landing');
 
-router.get('/node/', landing.get_landing);
+router.get('/Node/', landing.get_landing);
 
-router.post('/task/create',landing.submit_task);
+router.post('/Node/task/create',landing.submit_task);
 
-router.get('/tasks', landing.show_tasks);
+router.get('/Node/tasks', landing.show_tasks);
 
 router.get('/task/:task_id',landing.show_task);
 
