@@ -1,7 +1,7 @@
-'use strict';
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('Users', {
+        return queryInterface.createTable('Tasks', {
             id: {
                 allowNull: false,
                 primaryKey: true,
@@ -16,17 +16,17 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE
             },
-            nombre: {
+            tarea: {
                 allowNull: false,
                 type: Sequelize.STRING
             },
-            tipoUsuario: {
+            estado: {
                 allowNull: false,
                 type: Sequelize.STRING
             }
         });
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('Users');
+        return queryInterface.dropTable('Tasks');
     }
 }

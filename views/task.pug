@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 User
+    p 
+        span #{task.tarea}
+        | 
+        a(href='/task/' + task.id + '/edit') Modificar
+        | 
+        form(action="/task/" + task.id + '/delete', method="POST")
+            button(type="submit") Eliminar

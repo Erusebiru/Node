@@ -4,28 +4,134 @@ block content
   div(class='header')
     h1= title
     form(action="/",method="POST")
-      input(type="text", name="nombre", placeholder="Introduce tu nombre...")
+      input(type="text", name="tarea", placeholder="Introduce una tarea...")
       button(type="submit") Enviar
 
   div(class='content')
-    if users
-      h1 Listado de usuarios
-      table
-        thead
-          tr
-            th
-              span Fecha de creación
-            th
-              span Nombre
-            th
-              span Detalles
-        tbody
-          each user in users
-            tr
-              td
-                span #{user.createdAt}
-              td
-                p 
-                  span #{user.nombre}
-              td(class="details")
-                a(href='/user/' + user.id) Ver detalles
+    if tasks
+      div.board
+        h1 Backlog
+        div.board-content
+          table.backlog
+            thead
+              tr
+                th
+                  span Tarea
+                th
+                  span Detalles
+            tbody
+              tr.dropZone
+                td(class='board-content dropZone', colspan="3")
+                  span Drop
+                  i.fas.fa-plus(aria-hidden='true')
+                  span Here
+              each task in tasks
+                if(task.estado == "backlog")
+                  tr(draggable="true", class="tarea" data-id=task.id)
+                    td.tdInfo
+                      p 
+                        span #{task.tarea}
+                    td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
+                      span Ver
+      div.board
+        h1 Análisis
+        div.board-content
+          table.analisis
+            thead
+              tr
+                th
+                  span Tarea
+                th
+                  span Detalles
+            tbody
+              tr.dropZone
+                td(class='board-content dropZone', colspan="3")
+                  span Drop
+                  i.fas.fa-plus(aria-hidden='true')
+                  span Here
+              each task in tasks
+                if(task.estado == "analisis")
+                  tr(draggable="true", class="tarea" data-id=task.id)
+                    td.tdInfo
+                      p 
+                        span #{task.tarea}
+                    td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
+                      span Ver
+      div.board
+        h1 En curso
+        div.board-content
+          table.todo
+            thead
+              tr
+                th
+                  span Tarea
+                th
+                  span Detalles
+            tbody
+              tr.dropZone
+                td(class='board-content dropZone', colspan="3")
+                  span Drop
+                  i.fas.fa-plus(aria-hidden='true')
+                  span Here
+              each task in tasks
+                if(task.estado == "todo")
+                  tr(draggable="true", class="tarea" data-id=task.id)
+                    td.tdInfo
+                      p 
+                        span #{task.tarea}
+                    td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
+                      span Ver
+      div.board
+        h1 Validación
+        div.board-content
+          table.validation
+            thead
+              tr
+                th
+                  span Tarea
+                th
+                  span Detalles
+            tbody
+              tr.dropZone
+                td(class='board-content dropZone', colspan="3")
+                  span Drop
+                  i.fas.fa-plus(aria-hidden='true')
+                  span Here
+              each task in tasks
+                if(task.estado == "validation")
+                  tr(draggable="true", class="tarea" data-id=task.id)
+                    td.tdInfo
+                      p 
+                        span #{task.tarea}
+                    td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
+                      span Ver
+      div.board
+        h1 Done
+        div.board-content
+          table.done
+            thead
+              tr
+                th
+                  span Tarea
+                th
+                  span Detalles
+            tbody
+              tr.dropZone
+                td(class='board-content dropZone', colspan="3")
+                  span Drop
+                  i.fas.fa-plus(aria-hidden='true')
+                  span Here
+              each task in tasks
+                if(task.estado == "done")
+                  tr(draggable="true", class="tarea" data-id=task.id)
+                    td.tdInfo
+                      p 
+                        span #{task.tarea}
+                    td(class="details", onclick="javascript:window.location.href = '/task/" + task.id + "'")
+                      span Ver
+
+  script.
+    $(document).ready(function(){
+      initBoards()
+      initChilds();
+    })

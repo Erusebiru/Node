@@ -5,16 +5,18 @@ const landing = require('../controllers/landing');
 
 router.get('/', landing.get_landing);
 
-router.post('/',landing.submit_lead);
+router.post('/',landing.submit_task);
 
-router.get('/users', landing.show_users);
+router.get('/tasks', landing.show_tasks);
 
-router.get('/user/:user_id',landing.show_user);
+router.get('/task/:task_id',landing.show_task);
 
-router.get('/user/:user_id/edit',landing.show_edit_user);
+router.get('/task/:task_id/edit',landing.show_edit_task);
 
-router.post('/user/:user_id/edit', landing.edit_user);
+router.post('/task/:task_id/edit', landing.edit_task);
 
-router.post('/user/:user_id/delete', landing.delete_user);
+router.post('/task/:task_id/delete', landing.delete_task);
+
+router.post('/task/:task_id/update', landing.update_task);
 
 module.exports = router;

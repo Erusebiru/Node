@@ -1,21 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var User = sequelize.define('User', {
+    var Task = sequelize.define('Task', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,
             primaryKey: true,
         },
-        nombre: {
+        tarea: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        tipoUsuario: {
+        estado: {
             type: DataTypes.STRING,
             allowNull: true,
         }
     });
 
-    return User;
+    return Task;
 }

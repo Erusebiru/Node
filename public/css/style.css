@@ -8,39 +8,6 @@ a:link,a:visited{
   text-decoration: none;
 }
 
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-td,th{
-  text-align: center;
-  border: 1px solid black;
-  padding: 10px 20px 10px 20px;
-}
-
-th{
-  background-color: rgba(0,0,0,0.8);
-  color: white;
-}
-
-.content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.content h1{
-  margin-bottom: 15px;
-}
-
 .header{
   padding: 50px;
 }
@@ -71,6 +38,66 @@ th{
   border: 2px solid #333;
 }
 
+a {
+  color: #00B7FF;
+}
+table {
+  border-collapse: collapse;
+}
+
+table tbody tr:last-child{
+  z-index: 20;
+}
+
+tbody tr{
+  line-height: 30px;
+}
+td,th{
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+}
+
+th{
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  line-height: 25px;
+}
+
+.tdInfo{
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.content h1{
+  margin-bottom: 15px;
+}
+
+.board{
+  height: 100%;
+  background: transparent;
+  min-width: 300px;
+  text-align: center;
+  display:table;
+  flex-direction: row;
+  padding: 16px;
+  top: 0;
+}
+
+.board table{
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.board-content{
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
 .details{
   background-color: rgba(0,0,0,0.8);
   color: white !important;
@@ -79,4 +106,30 @@ th{
 .details:hover{
   background-color: green;
   cursor: pointer;
+}
+
+.dropZone{
+  padding: 25px;
+  font-size: 21px;
+  color: rgba(0,0,0,0.1);
+  width: 100%;
+  background-color: rgba(255,255,255,0);
+  height: 50px;
+}
+
+.dropZone i{
+  padding: 10px;
+  
+}
+
+.dropZone:hover{
+  font-weight: bold;
+  cursor: default;
+}
+
+.text{
+  z-index: -10;
+  position: absolute;
+  margin-left: 3%;
+  margin-top: -1%;
 }
